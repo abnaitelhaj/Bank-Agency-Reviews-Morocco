@@ -1,0 +1,11 @@
+requests~=2.31.0
+python-dotenv~=1.0.0
+psycopg2-binary~=2.9.10
+pandas~=2.0.0
+numpy~=1.24.0
+torch>=2.0.0
+transformers~=4.49.0
+langdetect~=1.0.9
+dbt-postgres~=1.7.0
+apache-airflow~=2.8.0
+pytest~=7.4.0

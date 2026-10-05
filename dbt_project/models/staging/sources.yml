@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: bank_reviews_enriched
+        description: "Enriched review rows loaded from the ETL enrich step"

@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: fact_reviews_star
+    description: "Fact table of bank agency reviews"
+    columns:
+      - name: review_id
+        tests: [unique, not_null]
+      - name: branch_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_branch')
+              field: branch_id
+      - name: person_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_reviewer')
+              field: person_id
+      - name: date_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      - name: review_rating
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+      - name: sentiment
+        tests:
+          - accepted_values:
+              values: ["positive", "negative", "neutral"]
+      - name: topic
+        tests:
+          - accepted_values:
+              values:
+                - "security"
+                - "customer service"
+                - "staff behavior"
+                - "account management"
+                - "ATM issues"
+                - "mobile banking"
+                - "billing"
+                - "wait times"
+                - "loans"
+                - "other"
+
+  - name: dim_branch
+    columns:
+      - name: branch_id
+        tests: [unique, not_null]
+
+  - name: dim_reviewer
+    columns:
+      - name: person_id
+        tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_id
+        tests: [unique, not_null]
